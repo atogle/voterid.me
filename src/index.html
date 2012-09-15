@@ -17,6 +17,10 @@
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
+
+      #voterid-details .label { float: right;}
+
+      .citation { font-size: 0.7em; }
     </style>
     <link href="lib/bootstrap-2.1.1/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -40,12 +44,17 @@
 
       <h3>Voter ID Facts</h3>
       {{#voter-id.subtopics}}
-      <section>
+      <section class="well">
+        <span class="label label-info">Confirmed of {{ date-acquired }}</span>
         <h4>{{subtopic}}</h4>
         <p>{{{fact}}}</p>
+
+        <strong>Citations</strong>
+        {{#citations}}
+        <br/><small class="citation">{{.}}</small>
+        {{/citations}}
       </section>
       {{/voter-id.subtopics}}
-
     </script>
   </head>
 
