@@ -49,7 +49,8 @@ var VoterId = VoterId || {};
   });
 
   var router = new V.Router();
-  Backbone.history.start();
+
+  Backbone.history.start({pushState: true, root: window.location.pathname});
 
   $(function() {
     $('#state').typeahead({source: _.pluck(V.states, 'name') });
