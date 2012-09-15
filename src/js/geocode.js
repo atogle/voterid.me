@@ -1,8 +1,6 @@
-if (typeof PGN === 'undefined' || !PGN) {
-  var PGN = {};
-}
+var VoterId = VoterId || {};
 
-PGN.geo = (function ($) {
+VoterID.geo = (function ($) {
   
   var _self,
     geocoder = new google.maps.Geocoder();
@@ -16,7 +14,7 @@ PGN.geo = (function ($) {
         navigator.geolocation.getCurrentPosition(function(position) {
 
           //save position
-          PGN.userLocation = position.coords;
+          VoterID.userLocation = position.coords;
 
           if (typeof callback === "function" && callback) { callback(); }
 

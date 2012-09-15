@@ -55,7 +55,14 @@ var VoterId = VoterId || {};
   // TODO: Ask to get user location
   //       Convert to state abbr
   //       Navigate to the abbr using the router
-
+  $(function() {
+    V.geo.getUserLocation(function () {
+      V.geo.reverseGeocode(V.userLocation, function (response) {
+        var params = V.geo.parseResp(response[0]);
+	console.log(response, params)
+      });
+    });
+  });
   // TODO: Bind state selector
   //       Get the state ABBR
   //       Navigate to the abbr using the router
