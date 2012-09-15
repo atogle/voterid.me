@@ -25,6 +25,7 @@ var VoterId = VoterId || {};
           url: stateConfig.url,
           dataType: 'json',
           success: function(data) {
+            data.state_config = stateConfig;
             stateDetailModel.set(data);
           }
         });
@@ -39,12 +40,43 @@ var VoterId = VoterId || {};
 
     render: function() {
       console.log('render with this data: ', this.model.toJSON());
+
+      var data = this.model.toJSON();
+
+      if (data.state_config.strictness === 'strict_photo') {
+        data.strictness = {
+          css_class: 'alert-error',
+          exclamation: 'Damn it.',
+          message: 'The Voter ID law is very strict for this election. Very specific photo IDs are required! Keep reading...'
+        };
+      } else if (data.state_config.strictness === 'photo') {
+        data.strictness = {
+          css_class: '',
+          exclamation: 'Heads up!',
+          message: 'A photo ID is required to vote in this election. Keep reading to learn the requirements.'
+        };
+
+      } else if (data.state_config.strictness === 'non_photo') {
+        data.strictness = {
+          css_class: '',
+          exclamation: 'Not too bad.',
+          message: 'You need an ID to vote in this election, but not a photo ID. Keep reading to learn the requirements.'
+        };
+      } else {
+        data.strictness = {
+          css_class: 'alert-success',
+          exclamation: 'Sweet!',
+          message: 'No Voter ID law is in effect for this election.'
+        };
+      }
       // Get the template and render
-      // this.$el.html(ich['detail-template'](this.model.toJSON()));
+      var html = ich['detail-template'](data);
+      this.$el.html(html);
     }
   });
 
   var stateDetailView = new V.StateDetailView({
+    el: '#voterid-details',
     model: stateDetailModel
   });
 
@@ -76,10 +108,4 @@ var VoterId = VoterId || {};
       router.navigate(stateConfig.abbr, {trigger: true});
     }
   });
-  // TODO: Bind state selector
-  //       Get the state ABBR
-  //       Navigate to the abbr using the router
-
-
-
 })(VoterId, jQuery);
