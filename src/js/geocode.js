@@ -1,7 +1,7 @@
 var VoterId = VoterId || {};
 
-VoterID.geo = (function ($) {
-  
+VoterId.geo = (function ($) {
+
   var _self,
     geocoder = new google.maps.Geocoder();
 
@@ -9,19 +9,19 @@ VoterID.geo = (function ($) {
 
     getUserLocation: function (callback) {
       // Try W3C Geolocation
-      if (navigator.geolocation) { 
+      if (navigator.geolocation) {
         //geolocation supported
         navigator.geolocation.getCurrentPosition(function(position) {
 
           //save position
-          VoterID.userLocation = position.coords;
+          _self.userLocation = position.coords;
 
           if (typeof callback === "function" && callback) { callback(); }
 
-        }, function() { 
-          //geolocation denied  
+        }, function() {
+          //geolocation denied
         });
-      } else { 
+      } else {
         //geolocation not supported
       }
     },
@@ -56,15 +56,15 @@ VoterID.geo = (function ($) {
         country;
 
       _.each(resp.address_components, function(i){
-        if (i.types[0] === 'administrative_area_level_1') { 
+        if (i.types[0] === 'administrative_area_level_1') {
           state = i.short_name;
         }
-        if (i.types[0] === 'country') { 
+        if (i.types[0] === 'country') {
           country = i.short_name;
         }
       });
 
-      var result = { 
+      var result = {
         'state': state,
         'country': country
       };

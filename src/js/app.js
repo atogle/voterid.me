@@ -49,19 +49,32 @@ var VoterId = VoterId || {};
     model: stateDetailModel
   });
 
-  window.app = new V.Router();
+  var router = new V.Router();
   Backbone.history.start();
 
-  // TODO: Ask to get user location
-  //       Convert to state abbr
-  //       Navigate to the abbr using the router
   $(function() {
+    $('#state').typeahead({source: _.pluck(V.states, 'name') });
+
+    // Ask for the user's location and navigate there
     V.geo.getUserLocation(function () {
-      V.geo.reverseGeocode(V.userLocation, function (response) {
+      V.geo.reverseGeocode(V.geo.userLocation, function (response) {
         var params = V.geo.parseResp(response[0]);
-	console.log(response, params)
+        router.navigate(params.state, {trigger: true});
       });
     });
+  });
+
+  // Bind to the state select form submit event
+  $('#state-form').submit(function(evt){
+    evt.preventDefault();
+    var name = $('#state').val(),
+        stateConfig = _.find(V.states, function(config){
+          return config.name.toLowerCase() === name.toLowerCase();
+        });
+
+    if (stateConfig) {
+      router.navigate(stateConfig.abbr, {trigger: true});
+    }
   });
   // TODO: Bind state selector
   //       Get the state ABBR
