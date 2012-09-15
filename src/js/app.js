@@ -10,16 +10,13 @@ var VoterId = VoterId || {};
     },
 
     reset: function() {
-      console.log('reset');
+      console.log('reset the view');
     },
 
     showDetails: function(stateAbbr) {
-      console.log('show details for ', stateAbbr);
       var stateConfig = _.find(V.states, function(config){
         return config.abbr === stateAbbr;
       });
-
-      console.log(stateConfig);
 
       if (stateConfig) {
         $.ajax({
