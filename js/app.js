@@ -18,6 +18,7 @@ var VoterId = VoterId || {};
       if (stateConfig) {
         $('#state-label').html("<a href='#" + stateConfig.abbr + "/select'>" + stateConfig.name +"</a>");
         $('#state-anchor').html("<a id='" + stateConfig.abbr + "/select'></a>");
+        _gaq.push(['_trackEvent', 'lookup', stateConfig.abbr]);
         $.ajax({
           url: stateConfig.url,
           dataType: 'json',
