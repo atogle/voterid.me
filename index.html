@@ -22,9 +22,6 @@
 
       .citation { font-size: 0.7em; }
       .exclamation { font-size: 1.7em; }
-      @media handheld {
-        .st_email_large { display: none; }
-      }
     </style>
     <link href="lib/bootstrap-2.1.1/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -120,7 +117,11 @@
     </script>
     <script type="text/javascript">var switchTo5x=false;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({publisher: "e6b3702d-ae56-46d7-8bce-8ae3df5cb64b"}); </script>
+    <script type="text/javascript">
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        $(".st_email_large").removeClass("st_email_large");
+      }
+      stLight.options({publisher: "e6b3702d-ae56-46d7-8bce-8ae3df5cb64b"}); </script>
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-34852613-1']);
