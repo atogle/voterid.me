@@ -92,24 +92,27 @@ var VoterId = VoterId || {};
     $('#state').typeahead({source: _.pluck(V.states, 'name') });
 
     // Ask for the user's location and navigate there
-    V.geo.getUserLocation(function () {
-      V.geo.reverseGeocode(V.geo.userLocation, function (response) {
-        var params = V.geo.parseResp(response[0]);
-        router.navigate(params.state, {trigger: true});
+    if (!Backbone.history.getHash()) {
+      V.geo.getUserLocation(function () {
+        V.geo.reverseGeocode(V.geo.userLocation, function (response) {
+          var params = V.geo.parseResp(response[0]);
+          router.navigate(params.state, {trigger: true});
+        });
       });
+    }
+
+    // Bind to the state select form submit event
+    $('#state-form').submit(function(evt){
+      evt.preventDefault();
+      var name = $('#state').val(),
+          stateConfig = _.find(V.states, function(config){
+            return config.name.toLowerCase() === name.toLowerCase();
+          });
+
+      if (stateConfig) {
+        router.navigate(stateConfig.abbr, {trigger: true});
+      }
     });
   });
 
-  // Bind to the state select form submit event
-  $('#state-form').submit(function(evt){
-    evt.preventDefault();
-    var name = $('#state').val(),
-        stateConfig = _.find(V.states, function(config){
-          return config.name.toLowerCase() === name.toLowerCase();
-        });
-
-    if (stateConfig) {
-      router.navigate(stateConfig.abbr, {trigger: true});
-    }
-  });
 })(VoterId, jQuery);
