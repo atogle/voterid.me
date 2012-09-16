@@ -78,6 +78,10 @@
       <h3 id="novalid">No Valid ID?</h3>
       <section class="well">
         <span class="label label-info">As of 9/16/12</span>
+        {{#getidinfo}}
+          <h4>Special Info</h4>
+          <p> {{getidinfo}}</p>
+        {{/getidinfo}}  
         <h4>Contact your Local DMV</h4>
         <p>To acquire a valid voter id, you should contact your local <a href="{{statedmv}}">Department of Motor Vehicles</a>.<p>
       </section>
