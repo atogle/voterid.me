@@ -5,18 +5,15 @@ var VoterId = VoterId || {};
 
   V.Router = Backbone.Router.extend({
     routes: {
-      '': 'reset',
-      ':state': 'showDetails'
+      ':state': 'showDetails',
+      ':state/:target': 'showDetails'
     },
 
-    reset: function() {
-      console.log('reset the view');
-    },
-
-    showDetails: function(stateAbbr) {
-      var stateConfig = _.find(V.states, function(config){
-        return config.abbr === stateAbbr;
-      });
+    showDetails: function(stateAbbr, target) {
+      var $container = $('body'),
+          stateConfig = _.find(V.states, function(config){
+            return config.abbr === stateAbbr;
+          });
 
       if (stateConfig) {
         $('#state-label').html(stateConfig.name);
@@ -25,11 +22,34 @@ var VoterId = VoterId || {};
           url: stateConfig.url,
           dataType: 'json',
           success: function(data) {
+            var $scrollTo;
             data.state_config = stateConfig;
             stateDetailModel.set(data);
+
+            if (target) {
+              // HACK HACK HACK!!!!
+              // Minus 60 pixels due to the padding on the body. There's
+              // a better way to do this but I'm sleepy.
+              $container.scrollTop($('#'+target).offset().top - 60);
+            } else {
+              $container.scrollTop(0);
+            }
           }
         });
       }
+    }
+  });
+
+  V.StateDetailLinksView = Backbone.View.extend({
+    initialize: function() {
+      this.model.on('change', this.render, this);
+    },
+
+    render: function() {
+      var data = this.model.toJSON();
+
+      // Get the template and render
+      this.$el.html(ich['detail-links-template'](data));
     }
   });
 
@@ -74,13 +94,17 @@ var VoterId = VoterId || {};
         stategophotline: data.state_config.stategophotline
       };
       // Get the template and render
-      var html = ich['detail-template'](data);
-      this.$el.html(html);
+      this.$el.html(ich['detail-template'](data));
     }
   });
 
   var stateDetailView = new V.StateDetailView({
     el: '#voterid-details',
+    model: stateDetailModel
+  });
+
+  var stateDetailLinksView = new V.StateDetailLinksView({
+    el: '#voterid-links',
     model: stateDetailModel
   });
 
