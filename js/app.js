@@ -96,8 +96,21 @@ var VoterId = VoterId || {};
       };
       // Get the template and render
       this.$el.html(ich['detail-template'](data));
+      $(".citationline").each(function () {
+        var contents = $(this).html();
+        if (contents.length > 30) {
+          $(this).attr('title', contents);
+          $(this).html(contents.substring(0,27) + "...");
+        } 
+      });
+      $(".citationline").click(function () {
+        var temp = $(this).attr('title');
+        $(this).attr('title',$(this).html());
+        $(this).html(temp);
+      });
     }
   });
+
 
   var stateDetailView = new V.StateDetailView({
     el: '#voterid-details',
