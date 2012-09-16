@@ -78,6 +78,7 @@ var VoterId = VoterId || {};
       // Get the template and render
       this.$el.html(ich['detail-links-template'](data));
       if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        $(".st_email_large").html("");
         $(".st_email_large").removeClass("st_email_large");
       }
       stButtons.locateElements();
@@ -157,9 +158,10 @@ var VoterId = VoterId || {};
       }
     });
   });
-  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-    $(".st_email_large").each(function () { $(this).removeClass("st_email_large"); });
-  }
 
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+    $(".st_email_large").html("");
+    $(".st_email_large").removeClass("st_email_large");
+  }
 
 })(VoterId, jQuery);
