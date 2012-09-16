@@ -72,9 +72,15 @@
       {{/challenges-to-voters-at-the-polling-place.subtopics}}
       <h3>Hotlines</h3>
         <ul>
+          {{#state_config.statehotline}}
           <li>State Hotline: {{ state_config.statehotline }}</li>
+          {{/state_config.statehotline}}
+          {{#state_config.statedemhotline}}
           <li>State Democrat Hotline: {{ state_config.statedemhotline }}</li>
+          {{/state_config.statedemhotline}}
+          {{#state_config.stategophotline }}
           <li>State Republican Hotline: {{ state_config.stategophotline }}</li>
+          {{/state_config.stategophotline }}
           <li>National Hotline: 1-866-MYVOTE1 (866-698-6831) or 1-866-OUR-VOTE (866-687-8683)</li>
           <li>En Español: 1-888-VE-Y-VOTA (888-839-8682)</li>
         </ul>
