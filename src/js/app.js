@@ -39,8 +39,6 @@ var VoterId = VoterId || {};
     },
 
     render: function() {
-      console.log('render with this data: ', this.model.toJSON());
-
       var data = this.model.toJSON();
 
       if (data.state_config.strictness === 'strict_photo') {
@@ -88,7 +86,7 @@ var VoterId = VoterId || {};
 
   var router = new V.Router();
 
-  Backbone.history.start({pushState: true, root: window.location.pathname});
+  Backbone.history.start();
 
   $(function() {
     $('#state').typeahead({source: _.pluck(V.states, 'name') });
