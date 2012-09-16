@@ -77,7 +77,11 @@ var VoterId = VoterId || {};
 
       // Get the template and render
       this.$el.html(ich['detail-links-template'](data));
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        $(".st_email_large").removeClass("st_email_large");
+      }
       stButtons.locateElements();
+      $(".st_email_large img").attr("display","hidden");
     }
   });
 
