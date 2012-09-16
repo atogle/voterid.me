@@ -48,20 +48,6 @@ var VoterId = VoterId || {};
 
     render: function() {
       var data = this.model.toJSON();
-
-      // Get the template and render
-      this.$el.html(ich['detail-links-template'](data));
-    }
-  });
-
-  V.StateDetailView = Backbone.View.extend({
-    initialize: function() {
-      this.model.on('change', this.render, this);
-    },
-
-    render: function() {
-      var data = this.model.toJSON();
-
       if (data.state_config.strictness === 'strict_photo') {
         data.strictness = {
           css_class: 'alert-error',
@@ -88,6 +74,21 @@ var VoterId = VoterId || {};
           message: 'No Voter ID law is in effect for this election.'
         };
       }
+
+      // Get the template and render
+      this.$el.html(ich['detail-links-template'](data));
+      stLight.options({publisher: "e6b3702d-ae56-46d7-8bce-8ae3df5cb64b"});
+    }
+  });
+
+  V.StateDetailView = Backbone.View.extend({
+    initialize: function() {
+      this.model.on('change', this.render, this);
+    },
+
+    render: function() {
+      var data = this.model.toJSON();
+
       data.abbrlower = data.state_config.abbr.toLowerCase();
       data.hotlines = {
         statehotline:   data.state_config.statehotline,
