@@ -94,6 +94,7 @@ var VoterId = VoterId || {};
         statedemhotline: data.state_config.statedemhotline,
         stategophotline: data.state_config.stategophotline
       };
+      data.statedmv = data.state_config.statedmv;
       // Get the template and render
       this.$el.html(ich['detail-template'](data));
       $(".citationline").each(function () {

@@ -39,6 +39,7 @@
       <h1>{{state_config.name}}</h1>
       <ul class="nav nav-tabs nav-stacked">
         <li><a href="#{{state_config.abbr}}/facts">Valid Voter IDs</a></li>
+        <li><a href="#{{state_config.abbr}}/novalid">No Valid ID?</a></li>
         <li><a href="#{{state_config.abbr}}/rights">Polling Place Rights</a></li>
         <li><a href="#{{state_config.abbr}}/hotlines">Hotlines</a></li>
         <li><a href="#{{state_config.abbr}}/info">More Information</a></li>
@@ -65,6 +66,12 @@
         </small>
       </section>
       {{/voter-id.subtopics}}
+      <h3 id="novalid">No Valid ID?</h3>
+      <section class="well">
+        <span class="label label-info">As of 9/16/12</span>
+        <h4>Contact your Local DMV</h4>
+        <p>To acquire a valid voter id, you should contact your local <a href="{{statedmv}}">Department of Motor Vehicles</a>.<p>
+      </section>
       <h3 id="rights">Polling Place Rights</h3>
       {{#challenges-to-voters-at-the-polling-place.subtopics}}
       <section class="well">
