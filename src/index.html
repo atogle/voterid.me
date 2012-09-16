@@ -55,6 +55,30 @@
         {{/citations}}
       </section>
       {{/voter-id.subtopics}}
+      <h3>Polling Place Rights</h3>
+      {{#challenges-to-voters-at-the-polling-place.subtopics}}
+      <section class="well">
+        <span class="label label-info">Confirmed of {{ date-acquired }}</span>
+        <h4>{{subtopic}}</h4>
+        <p>{{{fact}}}</p>
+
+        <strong>Citations</strong>
+        {{#citations}}
+        <br/><small class="citation">{{.}}</small>
+        {{/citations}}
+      </section>
+      {{/challenges-to-voters-at-the-polling-place.subtopics}}
+      <h3>Hotlines</h3>
+        <ul>
+          <li>State Hotline: {{ state_config.statehotline }}</li>
+          <li>State Democrat Hotline: {{ state_config.statedemhotline }}</li> 
+          <li>State Republican Hotline: {{ state_config.stategophotline }}</li>
+          <li>National Hotline: 1-866-MYVOTE1 (866-698-6831) or 1-866-OUR-VOTE (866-687-8683)</li>
+          <li>En Español: 1-888-VE-Y-VOTA (888-839-8682)</li>
+        </ul>
+      <h3><a href="http://www.googlevendorcontent.com/elections/vote/{{abbrlower}}.html">More Info</a></h3>
+        <br>
+	 
     </script>
   </head>
 

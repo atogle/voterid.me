@@ -69,6 +69,12 @@ var VoterId = VoterId || {};
           message: 'No Voter ID law is in effect for this election.'
         };
       }
+      data.abbrlower = data.state_config.abbr.toLowerCase();
+      data.hotlines = {
+        statehotline:   data.state_config.statehotline,
+        statedemhotline: data.state_config.statedemhotline,
+        stategophotline: data.state_config.stategophotline
+      };
       // Get the template and render
       var html = ich['detail-template'](data);
       this.$el.html(html);
