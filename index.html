@@ -21,6 +21,7 @@
       #voterid-details .label { float: right;}
 
       .citation { font-size: 0.7em; }
+      .exclamation { font-size: 1.7em; }
     </style>
     <link href="lib/bootstrap-2.1.1/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -49,7 +50,7 @@
     <script id="detail-template" type="text/html">
 
       <div class="alert {{ strictness.css_class }}">
-        <strong>{{ strictness.exclamation }}</strong> {{ strictness.message }}
+        <strong class='exclamation'>{{ strictness.exclamation }}</strong> {{ strictness.message }}
       </div>
 
       <h3 id="facts">Voter ID Facts</h3>
