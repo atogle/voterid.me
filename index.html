@@ -82,16 +82,16 @@
       <h3 id="hotlines">Hotlines</h3>
         <ul>
           {{#state_config.statehotline}}
-          <li>State Hotline: {{ state_config.statehotline }}</li>
+          <li>State Hotline: <a href='tel:{{ state_config.statehotline }}'>{{ state_config.statehotline }}</a></li>
           {{/state_config.statehotline}}
           {{#state_config.statedemhotline}}
-          <li>State Democrat Hotline: {{ state_config.statedemhotline }}</li>
+          <li>State Democrat Hotline: <a href='tel:{{ state_config.statedemhotline }}'>{{ state_config.statedemhotline }}</a></li>
           {{/state_config.statedemhotline}}
           {{#state_config.stategophotline }}
-          <li>State Republican Hotline: {{ state_config.stategophotline }}</li>
+          <li>State Republican Hotline: <a href='tel:{{ state_config.stategophotline }}'>{{ state_config.stategophotline }}</a></li>
           {{/state_config.stategophotline }}
-          <li>National Hotline: 1-866-MYVOTE1 (866-698-6831) or 1-866-OUR-VOTE (866-687-8683)</li>
-          <li>En Español: 1-888-VE-Y-VOTA (888-839-8682)</li>
+          <li>National Hotline: 1-866-MYVOTE1 (<a href='tel:866-698-6831'>866-698-6831</a>) or 1-866-OUR-VOTE (<a href='tel:866-687-8683'>866-687-8683</a>)</li>
+          <li>En Español: 1-888-VE-Y-VOTA (<a href='tel:888-839-8682'>888-839-8682</a>)</li>
         </ul>
       <h3 id="info">More Information</h3>
         <ul>
