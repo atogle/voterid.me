@@ -158,7 +158,7 @@ var VoterId = VoterId || {};
     });
   });
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-    $(".st_email_large").removeClass("st_email_large");
+    $(".st_email_large").each(function () { $(this).removeClass("st_email_large"); });
   }
 
 
