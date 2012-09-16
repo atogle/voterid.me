@@ -100,6 +100,7 @@ var VoterId = VoterId || {};
         stategophotline: data.state_config.stategophotline
       };
       data.statedmv = data.state_config.statedmv;
+      data.getidinfo = data.state_config.getidinfo;
       // Get the template and render
       this.$el.html(ich['detail-template'](data));
       $(".citationline").each(function () {
