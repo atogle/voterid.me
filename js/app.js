@@ -16,8 +16,8 @@ var VoterId = VoterId || {};
           });
 
       if (stateConfig) {
-        $('#state-label').html(stateConfig.name);
-
+        $('#state-label').html("<a href='#" + stateConfig.abbr + "/select'>" + stateConfig.name +"</a>");
+        $('#state-anchor').html("<a id='" + stateConfig.abbr + "/select'></a>");
         $.ajax({
           url: stateConfig.url,
           dataType: 'json',
