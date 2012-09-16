@@ -36,6 +36,7 @@
     <!-- <link rel="apple-touch-icon" href="ico/.png"> -->
 
     <script id="detail-links-template" type="text/html">
+      <h1>{{state_config.name}}</h1>
       <ul class="nav nav-tabs nav-stacked">
         <li><a href="#{{state_config.abbr}}/facts">Valid Voter IDs</a></li>
         <li><a href="#{{state_config.abbr}}/rights">Polling Place Rights</a></li>
@@ -45,7 +46,6 @@
     </script>
 
     <script id="detail-template" type="text/html">
-      <h1>{{state_config.name}}</h1>
 
       <div class="alert {{ strictness.css_class }}">
         <strong>{{ strictness.exclamation }}</strong> {{ strictness.message }}
