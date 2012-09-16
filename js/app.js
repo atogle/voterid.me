@@ -16,8 +16,9 @@ var VoterId = VoterId || {};
           });
 
       if (stateConfig) {
-        $('#state-label').html(stateConfig.name);
-
+        $('#state-label').html("<a href='#" + stateConfig.abbr + "/select'>" + stateConfig.name +"</a>");
+        $('#state-anchor').html("<a id='" + stateConfig.abbr + "/select'></a>");
+        _gaq.push(['_trackEvent', 'lookup', stateConfig.abbr]);
         $.ajax({
           url: stateConfig.url,
           dataType: 'json',
@@ -95,8 +96,21 @@ var VoterId = VoterId || {};
       };
       // Get the template and render
       this.$el.html(ich['detail-template'](data));
+      $(".citationline").each(function () {
+        var contents = $(this).html();
+        if (contents.length > 30) {
+          $(this).attr('title', contents);
+          $(this).html(contents.substring(0,27) + "...");
+        } 
+      });
+      $(".citationline").click(function () {
+        var temp = $(this).attr('title');
+        $(this).attr('title',$(this).html());
+        $(this).html(temp);
+      });
     }
   });
+
 
   var stateDetailView = new V.StateDetailView({
     el: '#voterid-details',

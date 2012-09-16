@@ -36,8 +36,9 @@
     <!-- <link rel="apple-touch-icon" href="ico/.png"> -->
 
     <script id="detail-links-template" type="text/html">
+      <h1>{{state_config.name}}</h1>
       <ul class="nav nav-tabs nav-stacked">
-        <li><a href="#{{state_config.abbr}}/facts">Voter ID Facts</a></li>
+        <li><a href="#{{state_config.abbr}}/facts">Valid Voter IDs</a></li>
         <li><a href="#{{state_config.abbr}}/rights">Polling Place Rights</a></li>
         <li><a href="#{{state_config.abbr}}/hotlines">Hotlines</a></li>
         <li><a href="#{{state_config.abbr}}/info">More Information</a></li>
@@ -45,7 +46,6 @@
     </script>
 
     <script id="detail-template" type="text/html">
-      <h1>{{state_config.name}}</h1>
 
       <div class="alert {{ strictness.css_class }}">
         <strong>{{ strictness.exclamation }}</strong> {{ strictness.message }}
@@ -60,7 +60,7 @@
 
         <small class="citation">
         {{#citations}}
-        * {{.}}<br/>
+        <span class="citationline">* {{.}}</span><br/>
         {{/citations}}
         </small>
       </section>
@@ -100,6 +100,20 @@
           <li><a href="http://www.googlevendorcontent.com/elections/vote/{{abbrlower}}.html">Google Election Center</a></li>
         </ul>
     </script>
+    <script type="text/javascript">var switchTo5x=false;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "e6b3702d-ae56-46d7-8bce-8ae3df5cb64b"}); </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34852613-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+  </script>
   </head>
 
   <body>
@@ -108,7 +122,6 @@
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="#">VoterID.me</a>
-
           <p id="state-label" class="navbar-text pull-right"></p>
         </div>
       </div>
@@ -128,6 +141,14 @@
           <input type="text" id="state" name="state" class="span3"  placeholder="My State" data-provide="typeahead">
           <button type="submit" class="btn btn-primary btn-block">Go</button>
         </form>
+        <p id="state-anchor"></p>
+        <p class="pull-right">
+          <span class='st_email_large' displayText='Email'></span>
+          <span class='st_facebook_large' displayText='Facebook'></span>
+          <span class='st_twitter_large' displayText='Tweet'></span>
+          <span class='st_googleplus_large' displayText='Google +'></span>
+          <span class='st_sharethis_large' displayText='ShareThis'></span>
+        </p>
       </div>
 
     </div> <!-- /container -->
