@@ -77,7 +77,7 @@ var VoterId = VoterId || {};
 
       // Get the template and render
       this.$el.html(ich['detail-links-template'](data));
-      stLight.options({publisher: "e6b3702d-ae56-46d7-8bce-8ae3df5cb64b"});
+      stButtons.locateElements();
     }
   });
 
