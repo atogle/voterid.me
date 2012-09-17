@@ -134,7 +134,7 @@ var VoterId = VoterId || {};
   Backbone.history.start();
 
   $(function() {
-    $('#state').typeahead({source: _.pluck(V.states, 'name') });
+    $('#state').typeahead({source: _.pluck(V.states, 'name').concat(_.pluck(V.states,'abbr')) });
 
     // Ask for the user's location and navigate there
     if (!Backbone.history.getHash()) {
@@ -151,7 +151,7 @@ var VoterId = VoterId || {};
       evt.preventDefault();
       var name = $('#state').val(),
           stateConfig = _.find(V.states, function(config){
-            return config.name.toLowerCase() === name.toLowerCase();
+            return config.name.toLowerCase() === name.toLowerCase() | config.abbr.toLowerCase() === name.toLowerCase();
           });
 
       if (stateConfig) {
