@@ -31,7 +31,7 @@ var VoterId = VoterId || {};
               // HACK HACK HACK!!!!
               // Minus 60 pixels due to the padding on the body. There's
               // a better way to do this but I'm sleepy.
-              $container.scrollTop($('#'+target).offset().top - 60);
+              $container.scrollTop($('#'+data.state_config.abbr + '/'+target).offset().top - 60);
             } else {
               $container.scrollTop(0);
             }
