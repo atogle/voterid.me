@@ -51,7 +51,7 @@ var VoterId = VoterId || {};
       if (data.state_config.strictness === 'strict_photo') {
         data.strictness = {
           css_class: 'alert-error',
-          exclamation: 'Damn it!',
+          exclamation: 'Uh-oh!',
           message: 'The Voter ID law is very strict for this election. Very specific photo IDs are required! Keep reading...'
         };
       } else if (data.state_config.strictness === 'photo') {
