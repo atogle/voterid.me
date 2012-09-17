@@ -61,7 +61,7 @@
     <script id="detail-template" type="text/html">
 
 
-      <h3 id="facts">Valid Voter IDs</h3>
+      <h3 id="{{state_config.abbr}}/facts">Valid Voter IDs</h3>
       {{#voter-id.subtopics}}
       <section class="well">
         <span class="label label-info">As of {{ date-acquired }}</span>
@@ -75,7 +75,7 @@
         </small>
       </section>
       {{/voter-id.subtopics}}
-      <h3 id="novalid">No Valid ID?</h3>
+      <h3 id="{{state_config.abbr}}/novalid">No Valid ID?</h3>
       <section class="well">
         <span class="label label-info">As of 9/16/12</span>
         {{#getidinfo}}
@@ -85,7 +85,7 @@
         <h4>Contact your Local DMV</h4>
         <p>To acquire a valid voter id, you should contact your local <a href="{{statedmv}}">Department of Motor Vehicles</a>.<p>
       </section>
-      <h3 id="rights">Polling Place Rights</h3>
+      <h3 id="{{state_config.abbr}}/rights">Polling Place Rights</h3>
       {{#challenges-to-voters-at-the-polling-place.subtopics}}
       <section class="well">
         <span class="label label-info">Confirmed of {{ date-acquired }}</span>
@@ -99,7 +99,7 @@
         </small>
       </section>
       {{/challenges-to-voters-at-the-polling-place.subtopics}}
-      <h3 id="hotlines">Hotlines</h3>
+      <h3 id="{{state_config.abbr}}/hotlines">Hotlines</h3>
         <ul>
           {{#state_config.statehotline}}
           <li>State Hotline: <a href='tel:{{ state_config.statehotline }}'>{{ state_config.statehotline }}</a></li>
@@ -113,7 +113,7 @@
           <li>National Hotline: 1-866-MYVOTE1 (<a href='tel:866-698-6831'>866-698-6831</a>) or 1-866-OUR-VOTE (<a href='tel:866-687-8683'>866-687-8683</a>)</li>
           <li>En Español: 1-888-VE-Y-VOTA (<a href='tel:888-839-8682'>888-839-8682</a>)</li>
         </ul>
-      <h3 id="info">More Information</h3>
+      <h3 id="{{state_config.abbr}}/info">More Information</h3>
         <ul>
           <li><a href="http://elections.neworganizing.com/en/guide/{{state_config.abbr}}/">New Organizing Institute</a></li>
           <li><a href="http://www.ncsl.org/legislatures-elections/elections/voter-id.aspx#{{state_config.abbr}}">National Conference of State Legislatures</a></li>
